@@ -1,7 +1,6 @@
 package com.raoulduke.crypto.fivedaysincloud;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,12 +12,8 @@ import java.util.Date;
 
 @RestController
 public class API {
-
     @Autowired
-    private RedisTemplate<String,String > template;
-
-    @Autowired
-    private OrderMongoDBRepository orderMongoDBRepository;
+    private OrderRepository orderRepository;
 
     static final String orderQueue = "ORDER_QUEUE";
 
@@ -37,10 +32,9 @@ public class API {
         order.setCreatedDateTime(new Date());
 
         //TODO: Check if there is already order with that ID
+        //TODO: ROUND PRICE TO 2 DECIMALS
 
-        orderMongoDBRepository.save(order);
-        System.out.println("Hi");
-        template.opsForList().leftPush(orderQueue,order.toString());
+        orderRepository.save(order);
 
         return ResponseEntity.status(HttpStatus.OK).body(order);
     }

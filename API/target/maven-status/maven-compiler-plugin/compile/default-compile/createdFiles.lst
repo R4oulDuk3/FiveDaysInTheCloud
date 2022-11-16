@@ -1,0 +1,5 @@
+com\raoulduke\crypto\fivedaysincloud\API.class
+com\raoulduke\crypto\fivedaysincloud\MongoConfig.class
+com\raoulduke\crypto\fivedaysincloud\OrderMongoDBRepository.class
+com\raoulduke\crypto\fivedaysincloud\FiveDaysInCloudApplication.class
+com\raoulduke\crypto\fivedaysincloud\Order.class
