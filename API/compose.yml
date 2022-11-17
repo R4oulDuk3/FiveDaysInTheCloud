@@ -1,11 +1,15 @@
-version: '3.8'
+version: '3.7'
 services:
-  redis:
-    image: redis:latest
+  mongodb:
+    container_name: "mongodb"
+    image: mongo:latest
     restart: always
     ports:
-      - '6379:6379'
-  mongodb:
-    image: mongo:latest
-    ports:
       - 27017:27017
+  crypto:
+    image: crypto-levi9
+    container_name: crypto-levi9
+    ports:
+      - 8080:8080
+    links:
+      - mongodb

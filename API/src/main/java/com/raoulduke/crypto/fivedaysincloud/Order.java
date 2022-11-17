@@ -11,28 +11,37 @@ import java.util.Date;
 public class Order {
 
     @Id
-    private String id;
+    private Integer id;
     private String currencyPair;
     private double price;
     private double quantity;
 
     private String type;
 
-    ArrayList<String> trades = new ArrayList<>();
+    ArrayList<Trade> trades = new ArrayList<>();
 
+//    public Order(String id, String currencyPair, double price, double quantity, String type, Date createdDateTime, double filledQuantity) {
+//        this.id = id;
+//        this.currencyPair = currencyPair;
+//        this.price = price;
+//        this.quantity = quantity;
+//        this.type = type;
+//        this.createdDateTime = createdDateTime;
+//        this.filledQuantity = filledQuantity;
+//    }
 
     private Date createdDateTime;
 
     private double filledQuantity;
 
-    private String orderStatus;
+    private String orderStatus = "OPEN";
 
 
-    public ArrayList<String> getTrades() {
+    public ArrayList<Trade> getTrades() {
         return trades;
     }
 
-    public void setTrades(ArrayList<String> trades) {
+    public void setTrades(ArrayList<Trade> trades) {
         this.trades = trades;
     }
 
@@ -57,7 +66,10 @@ public class Order {
     }
 
     public void setFilledQuantity(double filledQuantity) {
+
         this.filledQuantity = filledQuantity;
+        if (filledQuantity == quantity) orderStatus= "CLOSED";
+
     }
 
     public String getOrderStatus() {
@@ -68,11 +80,11 @@ public class Order {
         this.orderStatus = orderStatus;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
