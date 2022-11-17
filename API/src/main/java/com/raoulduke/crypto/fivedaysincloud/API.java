@@ -44,6 +44,7 @@ public class API {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
         order.setPrice(Math.floor(order.getPrice()  * 100) / 100); //Truncate
+        order.setQuantity(Math.floor(order.getQuantity()  * 100) / 100);
         order.setOrderStatus("OPEN");
         order.setCreatedDateTime(new Date());
 
