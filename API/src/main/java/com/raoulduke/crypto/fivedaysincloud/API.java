@@ -1,5 +1,10 @@
 package com.raoulduke.crypto.fivedaysincloud;
 
+import com.raoulduke.crypto.fivedaysincloud.models.Order;
+import com.raoulduke.crypto.fivedaysincloud.models.Orderbook;
+import com.raoulduke.crypto.fivedaysincloud.models.OrderbookElement;
+import com.raoulduke.crypto.fivedaysincloud.mongo.MongoCounter;
+import com.raoulduke.crypto.fivedaysincloud.mongo.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.http.HttpStatus;
