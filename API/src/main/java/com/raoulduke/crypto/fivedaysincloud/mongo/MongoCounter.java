@@ -29,7 +29,7 @@ public class MongoCounter {
     }
     public int resetSequence(String seqName) {
         IdSequence counter = mongoOperations.findAndModify(query(where("_id").is(seqName)),
-                new Update().set("seq",1), options().returnNew(true).upsert(true),
+                new Update().set("seq",0), options().returnNew(true).upsert(true),
                 IdSequence.class);
         return !Objects.isNull(counter) ? counter.getSeq() : 1;
     }
